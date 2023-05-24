@@ -23,7 +23,7 @@
 
 ## Daily Scrum
 
-*08h37*
+*09h00*
 
 ## Definition of Done
 
