@@ -1,5 +1,6 @@
 package ch.bbcag.gosweatmate.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import ch.bbcag.gosweatmate.AddExercise;
 import ch.bbcag.gosweatmate.R;
 
 public class HistoryFragment extends Fragment {
@@ -19,17 +21,22 @@ public class HistoryFragment extends Fragment {
         HistoryFragment fragment = new HistoryFragment();
         return fragment;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
         View result = inflater.inflate(R.layout.activity_create, container, false);
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
 
         Button addExercise = result.findViewById(R.id.AddExerciseButton);
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(activity.getApplicationContext(), AddExercise.class);
+
+                startActivity(intent);
 
 
             }
@@ -46,7 +53,6 @@ public class HistoryFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
-
 
 
         return result;
