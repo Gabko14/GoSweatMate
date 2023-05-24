@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import ch.bbcag.gosweatmate.R;
 
-public class AddExerciseFragment extends Fragment {
-    public static AddExerciseFragment newInstance() {
-        AddExerciseFragment fragment = new AddExerciseFragment();
+public class ExploreFragment extends Fragment {
+    public static ExploreFragment newInstance() {
+        ExploreFragment fragment = new ExploreFragment();
         return fragment;
     }
     @Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
@@ -13,9 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import ch.bbcag.gosweatmate.R;
 
-public class CreateFragment extends Fragment {
-    public static CreateFragment newInstance() {
-        CreateFragment fragment = new CreateFragment();
+public class HistoryFragment extends Fragment {
+    public static HistoryFragment newInstance() {
+        HistoryFragment fragment = new HistoryFragment();
         return fragment;
     }
     @Override
@@ -24,6 +25,16 @@ public class CreateFragment extends Fragment {
         View result = inflater.inflate(R.layout.activity_create, container, false);
         AppCompatActivity activity = (AppCompatActivity)getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
+
+        Button addExercise = result.findViewById(R.id.AddExerciseButton);
+        addExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -39,5 +50,7 @@ public class CreateFragment extends Fragment {
 
 
         return result;
+
     }
+
 }
