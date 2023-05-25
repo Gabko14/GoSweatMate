@@ -19,7 +19,7 @@ public class ExploreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        View result = inflater.inflate(R.layout.activity_add_exercise, container, false);
+        View result = inflater.inflate(R.layout.activity_explore, container, false);
         AppCompatActivity activity = (AppCompatActivity)getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
         return result;

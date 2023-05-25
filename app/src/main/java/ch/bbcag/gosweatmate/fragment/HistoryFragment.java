@@ -25,7 +25,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        View result = inflater.inflate(R.layout.activity_create, container, false);
+        View result = inflater.inflate(R.layout.activity_history, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
 
