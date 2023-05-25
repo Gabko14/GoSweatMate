@@ -32,22 +32,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home, container, false);
 
-        TextView textView = view.findViewById(R.id.text69);
-        String url = "https://wger.de/api/v2/exercise/";
-        RequestQueue queue = Volley.newRequestQueue(requireContext());
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                textView.setText(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // Handle error
-            }
-        });
-        queue.add(stringRequest);
 
         Button createWorkoutButton = view.findViewById(R.id.createWorkouButton);
         createWorkoutButton.setOnClickListener(new View.OnClickListener() {
