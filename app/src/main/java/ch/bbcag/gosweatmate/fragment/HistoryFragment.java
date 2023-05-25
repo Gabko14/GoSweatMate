@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import ch.bbcag.gosweatmate.AddExercise;
+import ch.bbcag.gosweatmate.AddExerciseActivity;
 import ch.bbcag.gosweatmate.R;
 
 public class HistoryFragment extends Fragment {
@@ -25,7 +25,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        View result = inflater.inflate(R.layout.activity_history, container, false);
+        View result = inflater.inflate(R.layout.history, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
 
@@ -34,7 +34,7 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(activity.getApplicationContext(), AddExercise.class);
+                Intent intent = new Intent(activity.getApplicationContext(), AddExerciseActivity.class);
 
                 startActivity(intent);
 
