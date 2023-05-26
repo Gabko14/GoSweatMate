@@ -25,7 +25,7 @@ public class CreatePlanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        View result = inflater.inflate(R.layout.create_plan_fragment, container, false);
+        View result = inflater.inflate(R.layout.create_plan, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
 

@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import ch.bbcag.gosweatmate.fragment.ExploreFragment;
 import ch.bbcag.gosweatmate.fragment.CreatePlanFragment;
+import ch.bbcag.gosweatmate.fragment.HistoryFragment;
 import ch.bbcag.gosweatmate.fragment.HomeFragment;
 
 
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = HomeFragment.newInstance();
                 } else if (itemId == R.id.navigation_explore) {
                     selectedFragment = ExploreFragment.newInstance();
-                } else if (itemId == R.id.navigation_create) {
-                    selectedFragment = CreatePlanFragment.newInstance();
+                } else if (itemId == R.id.navigation_history) {
+                    selectedFragment = HistoryFragment.newInstance();
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
