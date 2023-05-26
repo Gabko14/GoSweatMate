@@ -16,7 +16,7 @@ public class Log {
     private long workoutId;
 
     @ColumnInfo(name = "date")
-    private Date date;
+    private String date;
 
     public long getId() {
         return id;
@@ -26,6 +26,7 @@ public class Log {
         this.id = id;
     }
 
+
     public long getWorkoutId() {
         return workoutId;
     }
@@ -34,11 +35,11 @@ public class Log {
         this.workoutId = workoutId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

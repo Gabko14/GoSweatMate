@@ -30,6 +30,61 @@ public class LogEntries {
     private long repetitions;
 
     @ColumnInfo(name = "time_recorded")
-    private Timestamp timeRecorded;
+    private String timeRecordedTimeStamp;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getLogId() {
+        return logId;
+    }
+
+    public void setLogId(long logId) {
+        this.logId = logId;
+    }
+
+    public long getWorkoutHasExerciseId() {
+        return workoutHasExerciseId;
+    }
+
+    public void setWorkoutHasExerciseId(long workoutHasExerciseId) {
+        this.workoutHasExerciseId = workoutHasExerciseId;
+    }
+
+    public long getSetNumber() {
+        return setNumber;
+    }
+
+    public void setSetNumber(long setNumber) {
+        this.setNumber = setNumber;
+    }
+
+    public long getWeight() {
+        return weight;
+    }
+
+    public void setWeight(long weight) {
+        this.weight = weight;
+    }
+
+    public long getRepetitions() {
+        return repetitions;
+    }
+
+    public void setRepetitions(long repetitions) {
+        this.repetitions = repetitions;
+    }
+
+    public String getTimeRecordedTimeStamp() {
+        return timeRecordedTimeStamp;
+    }
+
+    public void setTimeRecordedTimeStamp(String timeRecordedTimeStamp) {
+        this.timeRecordedTimeStamp = timeRecordedTimeStamp;
+    }
 }

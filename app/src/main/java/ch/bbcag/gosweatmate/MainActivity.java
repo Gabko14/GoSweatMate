@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = AddExerciseFragment.newInstance();
                 } else if (itemId == R.id.navigation_create) {
                     selectedFragment = CreateFragment.newInstance();
+                } else {
+                    selectedFragment = HomeFragment.newInstance();
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
