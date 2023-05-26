@@ -10,12 +10,12 @@
 ### Gabriel Listiak
 
 * [2023-05-17](docs/journale/2023-05-17-Gabriel.md)
-* [2023-05-24]
+* [2023-05-24](docs/journale/2023-05-24-Gabriel.md)
 
 ### Nis Zhubi
 
 * [2023-05-17](docs/journale/2023-05-17-Nis.md)
-* [2023-05-24]
+* [2023-05-24](docs/journale/2023-05-24-Nis.md)
 
 ## Dokumentation
 
