@@ -16,16 +16,16 @@ import androidx.fragment.app.FragmentTransaction;
 import ch.bbcag.gosweatmate.AddExerciseActivity;
 import ch.bbcag.gosweatmate.R;
 
-public class HistoryFragment extends Fragment {
-    public static HistoryFragment newInstance() {
-        HistoryFragment fragment = new HistoryFragment();
+public class CreatePlanFragment extends Fragment {
+    public static CreatePlanFragment newInstance() {
+        CreatePlanFragment fragment = new CreatePlanFragment();
         return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        View result = inflater.inflate(R.layout.history, container, false);
+        View result = inflater.inflate(R.layout.create_plan_fragment, container, false);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionBar = activity.getSupportActionBar();
 

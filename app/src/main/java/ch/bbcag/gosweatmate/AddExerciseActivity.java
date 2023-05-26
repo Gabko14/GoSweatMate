@@ -1,46 +1,51 @@
 package ch.bbcag.gosweatmate;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import ch.bbcag.gosweatmate.adapter.ExerciseGalleryAdapter;
 
-public class AddExerciseActivity extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
+public class AddExerciseActivity extends AppCompatActivity {
 
-    TextView examName;
-    TextView examMessage;
-    TextView examDate;
-    View view;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    AddExerciseActivity(View itemView) {
-        super(itemView);
-        examName = (TextView) itemView.findViewById(R.id.examName);
-        examDate = (TextView) itemView.findViewById(R.id.examDate);
-        examMessage = (TextView) itemView.findViewById(R.id.examMessage);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_exercise);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        List<String> input = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            input.add("Test" + i);
+        }// define an adapter
+        mAdapter = new ExerciseGalleryAdapter(input);
+        recyclerView.setAdapter(mAdapter);
     }
 
-    ExerciseGalleryAdapter adapter;
-    RecyclerView recyclerView;
+
+//    AddExerciseActivity(View itemView) {
+//        super(itemView);
+//        nameView = itemView.findViewById(R.id.exercises);
+//
+//
+//    }
+
+
 
 
 }
