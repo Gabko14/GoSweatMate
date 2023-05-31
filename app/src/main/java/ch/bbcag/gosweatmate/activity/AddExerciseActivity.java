@@ -83,7 +83,6 @@ public class AddExerciseActivity extends AppCompatActivity {
                 }
 
                 myAdapter = new ExerciseGalleryAdapter(input);
-                myAdapter.
                 recyclerView.setAdapter(myAdapter);
 
             }
