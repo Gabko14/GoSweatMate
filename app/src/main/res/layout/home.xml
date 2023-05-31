@@ -1,84 +1,79 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingTop="24dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="24dp">
+    android:fillViewport="true">
 
-
-    <TextView
-        android:id="@+id/text69"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp" />
-
-
-    <Button
-        android:id="@+id/createWorkouButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#479CFE"
-        android:text="Create workout" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:text="Button"
-        android:textColor="#479CFE"
-        app:strokeColor="#2B2B2B"
-        app:strokeWidth="1dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
 
     <LinearLayout
+        android:id="@+id/homeMainLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/customborder"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="24dp">
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="24dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="24dp">
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="69dp"
-            android:layout_height="60dp"
-            android:src="@drawable/fish" />
+
+        <TextView
+            android:id="@+id/text69"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+
+        <Button
+            android:id="@+id/createWorkouButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#479CFE"
+            android:text="Create workout" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:text="Button"
+            android:textColor="#479CFE"
+            app:strokeColor="#2B2B2B"
+            app:strokeWidth="1dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="100dp"
+            android:background="@drawable/customborder"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:text="Leg Training at home"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Leg Training at home"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Squat, Air Jumps, Lunges, blabla, bla, calf Raises, singlw calf raise, Leg press" />
-            </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Squat, Air Jumps, Lunges, blabla, bla, calf Raises, singlw calf raise, Leg press" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:backgroundTint="#292929"
+            android:text="Button"
+            app:cornerRadius="15dp"
+            app:strokeColor="#B8B8B8"
+            app:strokeWidth="2dp" />
+
+
     </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>

@@ -6,11 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.List;
+
+import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
+import ch.bbcag.gosweatmate.dal.database.AppDatabase;
+import ch.bbcag.gosweatmate.dal.entities.Workout;
 import ch.bbcag.gosweatmate.fragment.ExploreFragment;
 import ch.bbcag.gosweatmate.fragment.CreatePlanFragment;
 import ch.bbcag.gosweatmate.fragment.HistoryFragment;
@@ -18,6 +25,8 @@ import ch.bbcag.gosweatmate.fragment.HomeFragment;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
+
+
+
 
 }
