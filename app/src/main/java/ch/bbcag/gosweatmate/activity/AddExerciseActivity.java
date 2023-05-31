@@ -28,8 +28,11 @@ import ch.bbcag.gosweatmate.adapter.ExerciseGalleryAdapter;
 public class AddExerciseActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    List<Integer> exerciseIds = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,10 @@ public class AddExerciseActivity extends AppCompatActivity {
                 JSONObject jsonResponse;
                 try {
                     jsonResponse = new JSONObject(response);
-
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
+
 
                 JSONArray resultsJsonArray;
                 try {
@@ -65,31 +68,23 @@ public class AddExerciseActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
 
-                int id;
-                String name;
-                String resultsJsonArrayString = resultsJsonArray.toString();
-                JSONArray array = null;
-                try {
-                    array = new JSONArray(resultsJsonArrayString);
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject row = null;
+
+                for (int i = 0; i < resultsJsonArray.length(); i++) {
                     try {
-                        row = array.getJSONObject(i);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
-                        name = row.getString("name");
+                        JSONObject exerciseObject = resultsJsonArray.getJSONObject(i);
+                        int id = exerciseObject.getInt("id");
+                        exerciseIds.add(id); // Füge die ID zur Liste hinzu
+
+                        String name = exerciseObject.getString("name");
                         input.add(name);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
                 }
-                mAdapter = new ExerciseGalleryAdapter(input);
-                recyclerView.setAdapter(mAdapter);
+
+                myAdapter = new ExerciseGalleryAdapter(input);
+                myAdapter.
+                recyclerView.setAdapter(myAdapter);
 
             }
         }, new Response.ErrorListener() {

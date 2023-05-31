@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtHeader;
         public TextView txtFooter;
+        public Button addBtn;
         public View layout;
 
         public ViewHolder(View v) {
@@ -27,6 +29,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            addBtn = (Button) v.findViewById(R.id.addButton);
         }
     }
 
@@ -61,6 +64,11 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
 
         final String name = values.get(position);
         holder.txtHeader.setText(name);
+        holder.addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("12345678987654321 187");            }
+        });
 
         holder.txtFooter.setText("Footer: " + name);
 
