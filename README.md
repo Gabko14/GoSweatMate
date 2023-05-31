@@ -16,6 +16,8 @@
 
 * [2023-05-17](docs/journale/2023-05-17-Nis.md)
 * [2023-05-24](docs/journale/2023-05-24-Nis.md)
+* [2023-05-25](docs/journale/2023-05-25-Nis.md)
+* [2023-05-26](docs/journale/2023-05-26-Nis.md)
 
 ## Dokumentation
 

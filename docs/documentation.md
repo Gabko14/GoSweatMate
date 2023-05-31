@@ -48,7 +48,9 @@ Es ermöglichen Sätze sowie die restlichen fehlenden Punkte zu beheben.
 
 # 3 User Storys
 
-> *Als \<Rolle\> möchte ich \<Ziel/Wunsch\>, um \<Nutzen\>.*
+Als \Benutzer\ möchte ich eine benutzerfreundliche App nutzen können, so dass ich schnell zurecht finde uns ich die App gut nutzen kann.
+Als \Benutzer\ möchte ich beim Öffnen der App eine Liste mit Übungen sehen, so dass ich schnell zurecht finde uns ich die App gut nutzen kann.
+Als \Benutzer\ möchte ich beim Klick auf eine Übung sollen die dazugehörigen details angezeit werden, so dass ich weitere Informationen zur Übung lesen kann.
 
 # 4 Mockups
 
