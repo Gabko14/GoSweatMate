@@ -1,4 +1,4 @@
-package ch.bbcag.gosweatmate;
+package ch.bbcag.gosweatmate.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +18,8 @@ import java.util.List;
 import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
 import ch.bbcag.gosweatmate.dal.database.AppDatabase;
 import ch.bbcag.gosweatmate.dal.entities.Workout;
+import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.fragment.ExploreFragment;
-import ch.bbcag.gosweatmate.fragment.CreatePlanFragment;
 import ch.bbcag.gosweatmate.fragment.HistoryFragment;
 import ch.bbcag.gosweatmate.fragment.HomeFragment;
 

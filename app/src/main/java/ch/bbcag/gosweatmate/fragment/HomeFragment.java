@@ -5,6 +5,7 @@ import android.graphics.BlendModeColorFilter;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -24,6 +24,7 @@ import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
 import ch.bbcag.gosweatmate.dal.database.AppDatabase;
 import ch.bbcag.gosweatmate.dal.entities.Workout;
+import ch.bbcag.gosweatmate.activity.CreatePlanActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -44,10 +45,9 @@ public class HomeFragment extends Fragment {
         createWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment selectedFragment = CreatePlanFragment.newInstance();
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), CreatePlanActivity.class);
+
+                startActivity(intent);
             }
         });
 
