@@ -24,6 +24,7 @@ import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.adapter.ExerciseGalleryAdapter;
+import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 public class AddExerciseActivity extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class AddExerciseActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<String> input = new ArrayList<>();
+        List<ExerciseModelStorage> input = new ArrayList<>();
 
 
         String url = "https://wger.de/api/v2/exercise/?format=json&limit=80&offset=0&language=2";
@@ -75,8 +76,8 @@ public class AddExerciseActivity extends AppCompatActivity {
                         int id = exerciseObject.getInt("id");
                         exerciseIds.add(id); // Füge die ID zur Liste hinzu
 
-                        String name = exerciseObject.getString("name");
-                        input.add(name);
+                        ExerciseModelStorage currentModel = new ExerciseModelStorage(exerciseObject.getString("name"), exerciseObject.getInt("id"));
+                        input.add(currentModel);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }

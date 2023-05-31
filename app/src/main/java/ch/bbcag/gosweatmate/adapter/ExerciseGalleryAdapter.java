@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
+import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGalleryAdapter.ViewHolder> {
-    private List<String> values;
+    private final List<ExerciseModelStorage> exerciseModel;
     Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,18 +34,18 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
         }
     }
 
-    public void add(int position, String item) {
-        values.add(position, item);
+    public void add(int position, ExerciseModelStorage item) {
+        exerciseModel.add(position, item);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        values.remove(position);
+        exerciseModel.remove(position);
         notifyItemRemoved(position);
     }
 
-    public ExerciseGalleryAdapter(List<String> myDataset) {
-        values = myDataset;
+    public ExerciseGalleryAdapter(List<ExerciseModelStorage> myDataset) {
+        exerciseModel = myDataset;
     }
 
     @NonNull
@@ -62,15 +63,15 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        final String name = values.get(position);
-        holder.txtHeader.setText(name);
+        final ExerciseModelStorage currentModel = exerciseModel.get(position);
+        holder.txtHeader.setText(currentModel.getName());
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("12345678987654321 187");            }
         });
 
-        holder.txtFooter.setText("Footer: " + name);
+        holder.txtFooter.setText("Footer: " + currentModel.getName() + " id: " + currentModel.getId());
 
 
     }
@@ -78,7 +79,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
 
     @Override
     public int getItemCount() {
-        return values.size();
+        return exerciseModel.size();
     }
 
 
