@@ -1,6 +1,8 @@
 package ch.bbcag.gosweatmate.dal.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
@@ -20,4 +22,10 @@ public interface WorkoutHasExerciseDao {
 
     @Query("SELECT * FROM workout_has_exercise whs")
     List<WorkoutHasExercise> getAll();
+
+    @Insert
+    void insertAll(WorkoutHasExercise... workoutHasExercises);
+
+    @Delete
+    void delete(WorkoutHasExercise workoutHasExercises);
 }
