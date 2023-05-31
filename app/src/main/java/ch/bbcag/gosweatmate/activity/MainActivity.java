@@ -1,4 +1,4 @@
-package ch.bbcag.gosweatmate;
+package ch.bbcag.gosweatmate.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,8 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.fragment.ExploreFragment;
-import ch.bbcag.gosweatmate.fragment.CreatePlanFragment;
 import ch.bbcag.gosweatmate.fragment.HistoryFragment;
 import ch.bbcag.gosweatmate.fragment.HomeFragment;
 

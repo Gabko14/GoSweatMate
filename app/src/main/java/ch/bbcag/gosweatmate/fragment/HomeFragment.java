@@ -1,5 +1,6 @@
 package ch.bbcag.gosweatmate.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import ch.bbcag.gosweatmate.R;
+import ch.bbcag.gosweatmate.activity.CreatePlanActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -30,10 +31,9 @@ public class HomeFragment extends Fragment {
         createWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment selectedFragment = CreatePlanFragment.newInstance();
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), CreatePlanActivity.class);
+
+                startActivity(intent);
             }
         });
 

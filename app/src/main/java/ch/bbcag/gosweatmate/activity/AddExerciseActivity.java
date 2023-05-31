@@ -1,4 +1,4 @@
-package ch.bbcag.gosweatmate;
+package ch.bbcag.gosweatmate.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.adapter.ExerciseGalleryAdapter;
 
 public class AddExerciseActivity extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class AddExerciseActivity extends AppCompatActivity {
         List<String> input = new ArrayList<>();
 
 
-        String url = "https://wger.de/api/v2/exercise/";
+        String url = "https://wger.de/api/v2/exercise/?format=json&limit=80&offset=0&language=2";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -77,11 +78,6 @@ public class AddExerciseActivity extends AppCompatActivity {
                     JSONObject row = null;
                     try {
                         row = array.getJSONObject(i);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
-                        id = row.getInt("id");
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
