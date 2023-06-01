@@ -56,7 +56,7 @@ Als \Benutzer\ möchte ich beim Klick auf eine Übung sollen die dazugehörigen 
 
 [Mockup](images/mockup.png)
 
-> ***1. Startactivity***  
+> ***1. MainActivity***  
 > *Innerhalb der StartActivity wird dem Benutzer zentral ein Login-Formular präsentiert. Oberhalb
 des Formulars wird das Logo der App platziert. Die Eingabefelder sollten möglichst in den oberen
 zwei Drittel des Bildschirms platziert werden damit die Tastatur diese nicht überdeckt.
@@ -65,7 +65,7 @@ Login-Button farblich hervorgehoben werden da dieser öfters benutzt wird. Der �
 wird im Normalfall einmal benutzt deshalb soll dieser neutral oder sogar weniger prominent
 dargestellt werden.*
 
-> ***2. Badi-Galerie***  
+> ***2. Create-PlanActivity***  
 > *In der «Badi-Galerie»-Ansicht wird dem Benutzer ein Grid mit den favorisierten Schwimmbäder
 angezeigt. Jedes einzelne Schwimmbad wird mit einem Bild präsentiert. In der in der unteren Ecke
 jedes Bildes wird die aktuelle Temperatur angezeigt. Darunter den Namen der Badi und der Ort. In der
@@ -75,13 +75,19 @@ platziert um neue Schwimmbäder in die eigene Liste aufzunehmen. In der Actionba
 rechts ein Kontextmenü platziert welches mit dem entsprechenden Button geöffnet werden kann. Darin
 sind die Punkte Einstellungen, Hilfe und Logout zu finden.*
 
-> ***3. Badidetails***   
+> ***3. Add-ExerciseActivity***   
 > ...
 
-> ***4. Badiauswahl***   
+> ***4. Plan-DetailsActivity***   
 > ...
 
-> ***5. Registration***   
+> ***5. Explore***   
+> ...
+> 
+> > ***5. Home***   
+> ...
+> 
+> > ***5. History***   
 > ...
 
 # 5 Technische Realisierung

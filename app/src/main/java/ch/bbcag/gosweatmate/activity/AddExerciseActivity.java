@@ -1,11 +1,13 @@
 package ch.bbcag.gosweatmate.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +33,6 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
     private RecyclerView recyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
 
 
     @Override
@@ -95,7 +96,11 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         queue.add(stringRequest);
 
 
+
+
     }
+
+
 
 
     @Override

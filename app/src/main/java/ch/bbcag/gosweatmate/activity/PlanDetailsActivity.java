@@ -1,11 +1,13 @@
 package ch.bbcag.gosweatmate.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +51,26 @@ public class PlanDetailsActivity extends AppCompatActivity {
             System.out.println("WorkoutId: " + currentWorkoutId + " exerciseId: " + exerciseId);
 
 
-            exerciseIds.add( (int) exerciseId);
+            exerciseIds.add((int) exerciseId);
         }
         myAdapter = new PlanDetailsAdapter(exerciseIds, getApplicationContext());
         recyclerView.setAdapter(myAdapter);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

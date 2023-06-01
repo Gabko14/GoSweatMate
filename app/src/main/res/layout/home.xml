@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFFFFF"
-            android:text="Button"
+            android:text="Create"
             android:textColor="#479CFE"
             app:strokeColor="#2B2B2B"
             app:strokeWidth="1dp" />
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:backgroundTint="#292929"
-            android:text="Button"
+            android:text="Workouts"
             app:cornerRadius="15dp"
             app:strokeColor="#B8B8B8"
             app:strokeWidth="2dp" />

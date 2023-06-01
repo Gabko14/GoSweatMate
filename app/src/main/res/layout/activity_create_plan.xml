@@ -8,16 +8,16 @@
 
     <Button
         android:id="@+id/AddExerciseButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_width="379dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#479CFE"
         android:text="Add Exercise"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="0.90999997" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -33,25 +33,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="395dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="450dp"
-        app:layout_constraintBottom_toTopOf="@+id/AddExerciseButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <TextView
         android:id="@+id/textView50"
         android:layout_width="wrap_content"
@@ -60,17 +41,30 @@
         app:layout_constraintBottom_toTopOf="@+id/AddExerciseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#2864FB"
         android:text="Create"
-        app:layout_constraintBottom_toTopOf="@+id/AddExerciseButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView50" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/AddExerciseButton" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Workout Name"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
