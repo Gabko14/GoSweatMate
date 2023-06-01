@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -103,7 +104,12 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
 
     @Override
     public void onItemClicked(ExerciseModelStorage exerciseModelStorage) {
-        exerciseModelStorage.getId();
+
+
+        Intent intent = new Intent(getApplicationContext(), CreatePlanActivity.class);
+        intent.putExtra("ExerciseIds", exerciseModelStorage.getId());
+
+        startActivity(intent);
 
     }
 
