@@ -14,6 +14,9 @@ import ch.bbcag.gosweatmate.R;
 public class CreatePlanActivity extends AppCompatActivity {
 
     private TextView textViewTest;
+    int exerciseId;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,35 +24,35 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         textViewTest = findViewById(R.id.textView50);
 
-        Intent intent = getIntent();
+        Intent intent = new Intent(getApplicationContext(), AddExerciseActivity.class);
+        Intent currentIntent = getIntent();
         Bundle extras = intent.getExtras();
 
         if (extras != null) {
-            if (extras.containsKey("ExerciseIds")) {
-                int exerciseId = extras.getInt("ExerciseIds");
+            for (int i = 1; i < extras.size() + 1; i++) {
+                if (extras.containsKey("ExerciseId" + i)) {
+                    exerciseId = extras.getInt("ExerciseId" + 1);
 
-                textViewTest.setText(String.valueOf(exerciseId));
+                    System.out.println(exerciseId);
+                    textViewTest.setText(String.valueOf(exerciseId));
+                }
             }
         }
 
 
+        Button addExercise = findViewById(R.id.AddExerciseButton);
+        addExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    Button addExercise = findViewById(R.id.AddExerciseButton);
-        addExercise.setOnClickListener(new View.OnClickListener()
 
-    {
-        @Override
-        public void onClick (View v){
+                startActivity(intent);
 
-        Intent intent = new Intent(getApplicationContext(), AddExerciseActivity.class);
 
-        startActivity(intent);
+            }
+        });
 
 
     }
-    });
-
-
-}
 
 }
