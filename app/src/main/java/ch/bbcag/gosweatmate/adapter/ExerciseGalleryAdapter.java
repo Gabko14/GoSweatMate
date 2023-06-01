@@ -5,23 +5,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
+import ch.bbcag.gosweatmate.helper.SelectListener;
 
 public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGalleryAdapter.ViewHolder> {
     private final List<ExerciseModelStorage> exerciseModel;
-    Context context;
+    private SelectListener listener;
+    private Context context;
+
+    public ExerciseGalleryAdapter(Context context, List<ExerciseModelStorage> exerciseModel, SelectListener listener) {
+        this.exerciseModel = exerciseModel;
+        this.listener = listener;
+        this.context = context;
+    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtHeader;
         public TextView txtFooter;
+        public RelativeLayout relativeLayout;
         public Button addBtn;
         public View layout;
 
@@ -30,6 +42,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            relativeLayout = (RelativeLayout) v.findViewById(R.id.main_container);
             addBtn = (Button) v.findViewById(R.id.addButton);
         }
     }
@@ -44,9 +57,6 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
         notifyItemRemoved(position);
     }
 
-    public ExerciseGalleryAdapter(List<ExerciseModelStorage> myDataset) {
-        exerciseModel = myDataset;
-    }
 
     @NonNull
     @Override
@@ -65,13 +75,21 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
 
         final ExerciseModelStorage currentModel = exerciseModel.get(position);
         holder.txtHeader.setText(currentModel.getName());
-        holder.addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("12345678987654321 187");            }
-        });
+//        holder.addBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("12345678987654321 187");
+//            }
+//        });
 
         holder.txtFooter.setText("Footer: " + currentModel.getName() + " id: " + currentModel.getId());
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClicked(exerciseModel.get(holder.getBindingAdapterPosition()));
+            }
+        });
 
 
     }
