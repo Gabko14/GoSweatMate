@@ -1,6 +1,8 @@
 package ch.bbcag.gosweatmate.dal.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
@@ -14,4 +16,10 @@ public interface LogEntriesDao {
 
     @Query("SELECT * FROM log_entries le WHERE le.log_id=:id")
     List<LogEntries> getAllByLogId(long id);
+
+    @Insert
+    void insertAll(LogEntries... logentries);
+
+    @Delete
+    void delete(LogEntries logentries);
 }
