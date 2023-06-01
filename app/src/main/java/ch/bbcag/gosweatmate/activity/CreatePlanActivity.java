@@ -34,19 +34,6 @@ public class CreatePlanActivity extends AppCompatActivity {
         });
 
 
-//        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-//            @Override
-//            public void handleOnBackPressed() {
-//                Fragment selectedFragment = HomeFragment.newInstance();
-//                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_layout, selectedFragment);
-//                transaction.commit();
-//            }
-//        };
-//        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
-
-
-
     }
 
 }

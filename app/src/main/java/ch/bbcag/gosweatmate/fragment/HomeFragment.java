@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.home, container, false);
 
 
-
         Button createWorkoutButton = view.findViewById(R.id.createWorkouButton);
         createWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,10 +83,9 @@ public class HomeFragment extends Fragment {
         }
 
 
-
-
         return view;
     }
+
     private void insertWorkout(String workoutName) {
         Workout newWorkout = new Workout();
 
