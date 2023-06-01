@@ -46,10 +46,10 @@ public class PlanDetailsActivity extends AppCompatActivity {
         for (WorkoutHasExercise workoutHasExercise : allWorkoutHasExercise) {
             long currentWorkoutId = workoutHasExercise.getWorkoutId();
             long exerciseId = workoutHasExercise.getExerciseId();
-            System.out.println("WorkoutId: " + currentWorkoutId + " exerciseId: " + exerciseId);
-
-
-            exerciseIds.add( (int) exerciseId);
+            if (workoutId == currentWorkoutId) {
+                System.out.println("WorkoutId: " + currentWorkoutId + " exerciseId: " + exerciseId);
+                exerciseIds.add((int) exerciseId);
+            }
         }
         myAdapter = new PlanDetailsAdapter(exerciseIds, getApplicationContext());
         recyclerView.setAdapter(myAdapter);

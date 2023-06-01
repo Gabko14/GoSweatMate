@@ -58,12 +58,16 @@ public class HomeFragment extends Fragment {
 //        insertWorkout("Pull Workout 2.");
 //        insertWorkout("Legs Workout 3.");
 //
-//        insertExerciseIntoWorkout(208, 345);
-//        insertExerciseIntoWorkout(208, 2056);
+//        insertExerciseIntoWorkout(1, 345);
+//        insertExerciseIntoWorkout(1, 2056);
 
 
 
         List<Workout> allWorkouts = workoutDao.getAll();
+
+        for (Workout workout: allWorkouts) {
+            System.out.println(workout.getId());
+        }
 
         LinearLayout mainLinearLayout = view.findViewById(R.id.homeMainLinearLayout);
 
