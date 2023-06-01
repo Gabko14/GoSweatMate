@@ -10,9 +10,6 @@ public class WorkoutHasExercise {
     @ColumnInfo(name = "id")
     private long id;
 
-    @ColumnInfo(name = "name")
-    private String name;
-
     @ColumnInfo(name = "workoutId")
     private long workoutId;
 
@@ -27,14 +24,6 @@ public class WorkoutHasExercise {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     // Getters and setters

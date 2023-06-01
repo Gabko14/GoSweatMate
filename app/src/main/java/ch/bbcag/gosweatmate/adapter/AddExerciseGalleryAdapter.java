@@ -18,12 +18,12 @@ import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 import ch.bbcag.gosweatmate.helper.SelectListener;
 
-public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGalleryAdapter.ViewHolder> {
+public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseGalleryAdapter.ViewHolder> {
     private final List<ExerciseModelStorage> exerciseModel;
     private SelectListener listener;
     private Context context;
 
-    public ExerciseGalleryAdapter(Context context, List<ExerciseModelStorage> exerciseModel, SelectListener listener) {
+    public AddExerciseGalleryAdapter(Context context, List<ExerciseModelStorage> exerciseModel, SelectListener listener) {
         this.exerciseModel = exerciseModel;
         this.listener = listener;
         this.context = context;

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 Fragment selectedFragment = null;
-                if (itemId == R.id.navigation_home) {
+                if (itemId == R.id.frame_layout) {
                     selectedFragment = HomeFragment.newInstance();
                 } else if (itemId == R.id.navigation_explore) {
                     selectedFragment = ExploreFragment.newInstance();
