@@ -82,7 +82,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
                 }
 
 
-                myAdapter = new AddExerciseGalleryAdapter(input);
+                myAdapter = new AddExerciseGalleryAdapter(AddExerciseActivity.this, input, AddExerciseActivity.this);
                 recyclerView.setAdapter(myAdapter);
 
             }
