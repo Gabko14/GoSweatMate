@@ -10,14 +10,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
-public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseGalleryAdapter.ViewHolder> {
-    private final List<ExerciseModelStorage> exerciseModel;
+public class PlanDetailsAdapter extends RecyclerView.Adapter<PlanDetailsAdapter.ViewHolder> {
+    private final List<Integer> exerciseIds;
     Context context;
+
+    public PlanDetailsAdapter(List<Integer> exerciseIds, Context context) {
+        this.exerciseIds = exerciseIds;
+        this.context = context;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtHeader;
@@ -29,23 +45,17 @@ public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseG
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
-            addBtn = (Button) v.findViewById(R.id.addButton);
         }
     }
 
-    public void add(int position, ExerciseModelStorage item) {
-        exerciseModel.add(position, item);
+    public void add(int position, int item) {
+        exerciseIds.add(position, item);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        exerciseModel.remove(position);
+        exerciseIds.remove(position);
         notifyItemRemoved(position);
-    }
-
-    public AddExerciseGalleryAdapter(List<ExerciseModelStorage> myDataset) {
-        exerciseModel = myDataset;
     }
 
     @NonNull
@@ -54,7 +64,7 @@ public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseG
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
+                inflater.inflate(R.layout.row_layout_plan_details, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -63,15 +73,36 @@ public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseG
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        final ExerciseModelStorage currentModel = exerciseModel.get(position);
-        holder.txtHeader.setText(currentModel.getName());
-        holder.addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("12345678987654321 187");            }
-        });
+        final Integer currentxerciseId = exerciseIds.get(position);
 
-        holder.txtFooter.setText("Footer: " + currentModel.getName() + " id: " + currentModel.getId());
+        String url = "https://wger.de/api/v2/exercise/" + currentxerciseId + "/?format=json";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject jsonResponse;
+                try {
+                    jsonResponse = new JSONObject(response);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    System.out.println(jsonResponse.getString("name"));
+                    holder.txtHeader.setText(jsonResponse.getString("name"));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Handle error
+            }
+        });
+        queue.add(stringRequest);
 
 
     }
@@ -79,7 +110,7 @@ public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseG
 
     @Override
     public int getItemCount() {
-        return exerciseModel.size();
+        return exerciseIds.size();
     }
 
 

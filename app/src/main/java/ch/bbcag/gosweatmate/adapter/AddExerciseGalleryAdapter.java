@@ -15,7 +15,7 @@ import java.util.List;
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
-public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGalleryAdapter.ViewHolder> {
+public class AddExerciseGalleryAdapter extends RecyclerView.Adapter<AddExerciseGalleryAdapter.ViewHolder> {
     private final List<ExerciseModelStorage> exerciseModel;
     Context context;
 
@@ -44,7 +44,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
         notifyItemRemoved(position);
     }
 
-    public ExerciseGalleryAdapter(List<ExerciseModelStorage> myDataset) {
+    public AddExerciseGalleryAdapter(List<ExerciseModelStorage> myDataset) {
         exerciseModel = myDataset;
     }
 

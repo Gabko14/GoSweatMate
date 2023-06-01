@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
-import ch.bbcag.gosweatmate.adapter.ExerciseGalleryAdapter;
+import ch.bbcag.gosweatmate.adapter.AddExerciseGalleryAdapter;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 public class AddExerciseActivity extends AppCompatActivity {
@@ -32,7 +30,6 @@ public class AddExerciseActivity extends AppCompatActivity {
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    List<Integer> exerciseIds = new ArrayList<>();
 
 
     @Override
@@ -74,7 +71,6 @@ public class AddExerciseActivity extends AppCompatActivity {
                     try {
                         JSONObject exerciseObject = resultsJsonArray.getJSONObject(i);
                         int id = exerciseObject.getInt("id");
-                        exerciseIds.add(id); // Füge die ID zur Liste hinzu
 
                         ExerciseModelStorage currentModel = new ExerciseModelStorage(exerciseObject.getString("name"), exerciseObject.getInt("id"));
                         input.add(currentModel);
@@ -83,7 +79,7 @@ public class AddExerciseActivity extends AppCompatActivity {
                     }
                 }
 
-                myAdapter = new ExerciseGalleryAdapter(input);
+                myAdapter = new AddExerciseGalleryAdapter(input);
                 recyclerView.setAdapter(myAdapter);
 
             }

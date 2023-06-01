@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GoSweatMate"
         tools:targetApi="31">
         <activity
+            android:name=".activity.PlanDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CreatePlanActivity"
             android:exported="false" />
         <activity

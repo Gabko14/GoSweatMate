@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "workout")
 public class Workout {
     @PrimaryKey(autoGenerate = true)
@@ -13,11 +15,13 @@ public class Workout {
     @ColumnInfo(name = "name")
     private String name;
 
+
+
     public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -28,4 +32,5 @@ public class Workout {
     public void setName(String name) {
         this.name = name;
     }
+
 }
