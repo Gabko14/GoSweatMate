@@ -8,13 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ch.bbcag.gosweatmate.R;
 
 
 public class CreatePlanActivity extends AppCompatActivity {
 
     private TextView textViewTest;
-    int exerciseId;
+    private List<Integer> exerciseIds = new ArrayList();
 
 
     @Override
@@ -24,17 +27,15 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         textViewTest = findViewById(R.id.textView50);
 
-        Intent intent = new Intent(getApplicationContext(), AddExerciseActivity.class);
         Intent currentIntent = getIntent();
-        Bundle extras = intent.getExtras();
+        Bundle extras = currentIntent.getExtras();
 
+        //Take all the extras that we got and put them into the new Intent so they dont get lost
         if (extras != null) {
             for (int i = 1; i < extras.size() + 1; i++) {
                 if (extras.containsKey("ExerciseId" + i)) {
-                    exerciseId = extras.getInt("ExerciseId" + 1);
-
-                    System.out.println(exerciseId);
-                    textViewTest.setText(String.valueOf(exerciseId));
+                    int exerciseId = extras.getInt("ExerciseId" + i);
+                    exerciseIds.add(exerciseId);
                 }
             }
         }
@@ -44,10 +45,15 @@ public class CreatePlanActivity extends AppCompatActivity {
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent newIntent = new Intent(getApplicationContext(), AddExerciseActivity.class);
 
+                if (exerciseIds.size() != 0) {
+                    for (int i = 0; i < exerciseIds.size(); i++) {
+                        newIntent.putExtra("ExerciseId" + (i + 1), exerciseIds.get(i));
+                    }
+                }
 
-                startActivity(intent);
-
+                startActivity(newIntent);
 
             }
         });

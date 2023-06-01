@@ -43,7 +43,7 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
             relativeLayout = (RelativeLayout) v.findViewById(R.id.main_container);
-            addBtn = (Button) v.findViewById(R.id.addButton);
+
         }
     }
 
@@ -75,12 +75,6 @@ public class ExerciseGalleryAdapter extends RecyclerView.Adapter<ExerciseGallery
 
         final ExerciseModelStorage currentModel = exerciseModel.get(position);
         holder.txtHeader.setText(currentModel.getName());
-//        holder.addBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("12345678987654321 187");
-//            }
-//        });
 
         holder.txtFooter.setText("Footer: " + currentModel.getName() + " id: " + currentModel.getId());
 

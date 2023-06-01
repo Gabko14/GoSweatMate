@@ -106,10 +106,24 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
     public void onItemClicked(ExerciseModelStorage exerciseModelStorage) {
 
 
-        Intent intent = new Intent(getApplicationContext(), CreatePlanActivity.class);
-        intent.putExtra("ExerciseIds", exerciseModelStorage.getId());
+        Intent newIntent = new Intent(getApplicationContext(), CreatePlanActivity.class);
+        Intent currentIntent = getIntent();
 
-        startActivity(intent);
+        Bundle extras = currentIntent.getExtras();
+
+        //Take all the extras that we got and put them into the new Intent so they dont get lost
+        if (extras != null) {
+            for (int i = 1; i < extras.size() + 1; i++) {
+                if (extras.containsKey("ExerciseId" + i)) {
+                    newIntent.putExtra("ExerciseId" + i, extras.getInt("ExerciseId" + i));
+                }
+            }
+            newIntent.putExtra("ExerciseId" + (extras.size() + 1), exerciseModelStorage.getId());
+        } else {
+            newIntent.putExtra("ExerciseId" + 1, exerciseModelStorage.getId());
+        }
+
+        startActivity(newIntent);
 
     }
 
