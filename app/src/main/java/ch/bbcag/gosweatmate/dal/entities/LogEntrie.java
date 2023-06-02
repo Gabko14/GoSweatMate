@@ -4,11 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-
-@Entity(tableName = "log_entries")
-public class LogEntries {
+@Entity(tableName = "log_entrie")
+public class LogEntrie {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

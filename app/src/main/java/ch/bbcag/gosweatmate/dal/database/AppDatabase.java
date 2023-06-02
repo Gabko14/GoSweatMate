@@ -13,11 +13,11 @@ import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
 import ch.bbcag.gosweatmate.dal.dao.WorkoutHasExerciseDao;
 import ch.bbcag.gosweatmate.dal.entities.Exercise;
 import ch.bbcag.gosweatmate.dal.entities.Log;
-import ch.bbcag.gosweatmate.dal.entities.LogEntries;
+import ch.bbcag.gosweatmate.dal.entities.LogEntrie;
 import ch.bbcag.gosweatmate.dal.entities.Workout;
 import ch.bbcag.gosweatmate.dal.entities.WorkoutHasExercise;
 
-@Database(entities = {Exercise.class, Workout.class, WorkoutHasExercise.class, Log.class, LogEntries.class}, version = 1)
+@Database(entities = {Exercise.class, Workout.class, WorkoutHasExercise.class, Log.class, LogEntrie.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
