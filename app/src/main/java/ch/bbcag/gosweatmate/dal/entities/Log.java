@@ -15,6 +15,10 @@ public class Log {
     @ColumnInfo(name = "workoutId")
     private long workoutId;
 
+    //This is only in case that the workout gets deleted and we cant find out which workout had that Id, so we atleast have the name of the workout
+    @ColumnInfo(name = "workoutName")
+    private String workoutName;
+
     @ColumnInfo(name = "date")
     private String date;
 
@@ -41,5 +45,13 @@ public class Log {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getWorkoutName() {
+        return workoutName;
+    }
+
+    public void setWorkoutName(String workoutName) {
+        this.workoutName = workoutName;
     }
 }

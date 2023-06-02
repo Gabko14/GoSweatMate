@@ -54,7 +54,6 @@ public class HistoryFragment extends Fragment {
 //        insertExerciseIntoWorkout(1, 2056);
 
 
-
         List<Log> allLogs = logDao.getAll();
         Collections.reverse(allLogs);
 
@@ -69,7 +68,7 @@ public class HistoryFragment extends Fragment {
             int pixelsHeight = (int) (dpsHeight * scale + 0.5f);
 
             btnTag.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, pixelsHeight));
-            btnTag.setText("Date: " + log.getDate() + "\nWorkout: " + workoutDao.getById((int) log.getWorkoutId()).getName());
+            btnTag.setText("Date: " + log.getDate() + "\nWorkout: " + log.getWorkoutName());
             btnTag.getBackground().setColorFilter(new BlendModeColorFilter(0xFFFFFFFF, BlendMode.MULTIPLY));
             btnTag.setTextColor(getResources().getColor(R.color.grey));
 

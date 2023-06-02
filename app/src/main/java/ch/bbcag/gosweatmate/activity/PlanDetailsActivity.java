@@ -92,6 +92,7 @@ public class PlanDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log newLog = new Log();
                 newLog.setWorkoutId(workoutId);
+                newLog.setWorkoutName(workoutDao.getById(workoutId).getName());
                 newLog.setDate(String.valueOf(java.time.LocalDate.now()));
 
                 logDao.insertAll(newLog);
