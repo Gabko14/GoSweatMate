@@ -45,6 +45,8 @@ import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 public class CreatePlanActivity extends AppCompatActivity {
 
     private EditText editText;
+    private Button backToHomeButton;
+    private Button addExerciseButton;
     private List<Integer> exerciseIds = new ArrayList();
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -62,6 +64,8 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView19);
         editText = findViewById(R.id.editText);
+        backToHomeButton = findViewById(R.id.backToHomeButton);
+        addExerciseButton = findViewById(R.id.AddExerciseButton);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -139,8 +143,8 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         }
 
-        Button addExercise = findViewById(R.id.AddExerciseButton);
-        addExercise.setOnClickListener(new View.OnClickListener() {
+        Button addExerciseButton = findViewById(R.id.AddExerciseButton);
+        addExerciseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent newIntent = new Intent(getApplicationContext(), AddExerciseActivity.class);
@@ -166,6 +170,14 @@ public class CreatePlanActivity extends AppCompatActivity {
                 String givenWorkoutName = editText.getText().toString();
                 insertWorkoutIntoDB(givenWorkoutName);
 
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        backToHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(myIntent);
             }
