@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity.AddExerciseActivity">
 
+    <ProgressBar
+        android:id="@+id/loading_badi_details_progress"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
