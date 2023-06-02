@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/finishButton"
-        android:layout_width="104dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginStart="16dp"
