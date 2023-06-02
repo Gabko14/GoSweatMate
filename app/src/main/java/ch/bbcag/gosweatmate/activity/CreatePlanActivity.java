@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -132,7 +133,7 @@ public class CreatePlanActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    // Handle error
+                    Toast.makeText(getApplicationContext(), "no connection", Toast.LENGTH_SHORT).show();
                 }
             });
             queue.add(stringRequest);
@@ -163,11 +164,16 @@ public class CreatePlanActivity extends AppCompatActivity {
         createWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String givenWorkoutName = editText.getText().toString();
-                insertWorkoutIntoDB(givenWorkoutName);
+                if (exerciseIds.size() > 0) {
+                    String givenWorkoutName = editText.getText().toString();
+                    insertWorkoutIntoDB(givenWorkoutName);
 
-                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(myIntent);
+                    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(myIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "No Exercises", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -212,7 +218,6 @@ public class CreatePlanActivity extends AppCompatActivity {
         workoutHasExercise.setExerciseId(exerciseId);
         workoutHasExerciseDao.insertAll(workoutHasExercise);
     }
-
 
 
 }
