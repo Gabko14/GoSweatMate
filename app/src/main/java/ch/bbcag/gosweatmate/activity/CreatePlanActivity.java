@@ -66,6 +66,10 @@ public class CreatePlanActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         Bundle extras = currentIntent.getExtras();
 
+        if (currentIntent.getStringExtra("workoutName") != null) {
+            editText.setText(currentIntent.getStringExtra("workoutName"));
+        }
+
         //Take all the extras that we got and put them into the new Intent so they dont get lost
         if (extras != null) {
             for (int i = 1; i < extras.size() + 1; i++) {
@@ -143,9 +147,9 @@ public class CreatePlanActivity extends AppCompatActivity {
                         newIntent.putExtra("ExerciseId" + (i + 1), exerciseIds.get(i));
                     }
                 }
+                newIntent.putExtra("workoutName", editText.getText().toString());
 
                 startActivity(newIntent);
-
             }
         });
 
@@ -188,11 +192,12 @@ public class CreatePlanActivity extends AppCompatActivity {
         List<Workout> allWorkouts = workoutDao.getAll();
         Integer workoutId = Math.toIntExact(allWorkouts.get(allWorkouts.size() - 1).getId());
 
-        for (Integer exerciseId: exerciseIds) {
+        for (Integer exerciseId : exerciseIds) {
             insertExerciseIntoWorkout(workoutId, exerciseId);
         }
 
     }
+
     private void insertExerciseIntoWorkout(Integer workoutId, Integer exerciseId) {
         WorkoutHasExercise workoutHasExercise = new WorkoutHasExercise();
 

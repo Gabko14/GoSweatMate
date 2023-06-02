@@ -119,6 +119,9 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         } else {
             newIntent.putExtra("ExerciseId" + 1, exerciseModelStorage.getId());
         }
+        if (currentIntent.getStringExtra("workoutName") != null) {
+            newIntent.putExtra("workoutName", currentIntent.getStringExtra("workoutName"));
+        }
 
         startActivity(newIntent);
 
