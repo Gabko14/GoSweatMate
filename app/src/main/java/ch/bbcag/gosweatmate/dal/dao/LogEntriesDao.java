@@ -7,19 +7,19 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import ch.bbcag.gosweatmate.dal.entities.LogEntries;
+import ch.bbcag.gosweatmate.dal.entities.LogEntrie;
 
 @Dao
 public interface LogEntriesDao {
-    @Query("SELECT * FROM log_entries")
-    List<LogEntries> getAll();
+    @Query("SELECT * FROM log_entrie")
+    List<LogEntrie> getAll();
 
-    @Query("SELECT * FROM log_entries le WHERE le.log_id=:id")
-    List<LogEntries> getAllByLogId(long id);
+    @Query("SELECT * FROM log_entrie le WHERE le.log_id=:id")
+    List<LogEntrie> getAllByLogId(long id);
 
     @Insert
-    void insertAll(LogEntries... logentries);
+    void insertAll(LogEntrie... logentries);
 
     @Delete
-    void delete(LogEntries logentries);
+    void delete(LogEntrie logentries);
 }

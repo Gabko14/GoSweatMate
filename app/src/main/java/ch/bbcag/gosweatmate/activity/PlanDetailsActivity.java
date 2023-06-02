@@ -2,8 +2,6 @@ package ch.bbcag.gosweatmate.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,20 +16,26 @@ import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.adapter.PlanDetailsAdapter;
+import ch.bbcag.gosweatmate.dal.dao.LogDao;
+import ch.bbcag.gosweatmate.dal.dao.LogEntriesDao;
 import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
 import ch.bbcag.gosweatmate.dal.dao.WorkoutHasExerciseDao;
 import ch.bbcag.gosweatmate.dal.database.AppDatabase;
+import ch.bbcag.gosweatmate.dal.entities.Log;
+import ch.bbcag.gosweatmate.dal.entities.LogEntrie;
 import ch.bbcag.gosweatmate.dal.entities.WorkoutHasExercise;
-import ch.bbcag.gosweatmate.fragment.HomeFragment;
 
 public class PlanDetailsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
+    private Button deleteWorkoutButton;
+    private Button finishedWorkoutButton;
     private WorkoutHasExerciseDao workoutHasExerciseDao;
     private WorkoutDao workoutDao;
+    private LogDao logDao;
+    private LogEntriesDao logEntriesDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class PlanDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plan_details);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView11);
+        deleteWorkoutButton = (Button) findViewById(R.id.deleteWorkoutButton);
+        finishedWorkoutButton = (Button) findViewById(R.id.finishButton);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -50,6 +56,8 @@ public class PlanDetailsActivity extends AppCompatActivity {
 
         workoutHasExerciseDao = AppDatabase.getInstance(getApplicationContext()).getWorkoutHasExerciseDao();
         workoutDao = AppDatabase.getInstance(getApplicationContext()).getWorkoutDao();
+        logDao = AppDatabase.getInstance(getApplicationContext()).getLogDao();
+        logEntriesDao = AppDatabase.getInstance(getApplicationContext()).getLogEntriesDao();
 
         List<WorkoutHasExercise> allWorkoutHasExercise = workoutHasExerciseDao.getAll();
 
@@ -69,8 +77,6 @@ public class PlanDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        Button deleteWorkoutButton = findViewById(R.id.deleteWorkoutButton);
-
         deleteWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +84,24 @@ public class PlanDetailsActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(myIntent);
+            }
+        });
+
+        finishedWorkoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log newLog = new Log();
+                newLog.setWorkoutId(workoutId);
+                newLog.setDate(String.valueOf(java.time.LocalDate.now()));
+
+                logDao.insertAll(newLog);
+
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
+                //This will get used once the user is able the Log every singgle Exercise in a plan
+//                List<Log> allLogs = logDao.getAll();
+//                LogEntrie newLogEntrie = new LogEntrie();
+//                newLogEntrie.setLogId(allLogs.size() - 1);
             }
         });
     }
