@@ -1,13 +1,13 @@
 package ch.bbcag.gosweatmate.activity;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,6 +33,8 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
     private RecyclerView recyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private Button loadMoreButton;
+    private List<ExerciseModelStorage> exerciseModels = new ArrayList<>();
 
 
     @Override
@@ -41,14 +43,24 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         setContentView(R.layout.activity_add_exercise);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
+        loadMoreButton = findViewById(R.id.loadMoreButton);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ExerciseModelStorage> exerciseModels = new ArrayList<>();
+        load80MoreExercises();
 
+        loadMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                load80MoreExercises();
+            }
+        });
 
-        String url = "https://wger.de/api/v2/exercise/?format=json&limit=80&offset=0&language=2";
+    }
+
+    public void load80MoreExercises() {
+        String url = "https://wger.de/api/v2/exercise/?format=json&limit=80&offset=" + exerciseModels.size() + "&language=2";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -86,6 +98,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
                 myAdapter = new AddExerciseGalleryAdapter(AddExerciseActivity.this, exerciseModels, AddExerciseActivity.this);
                 recyclerView.setAdapter(myAdapter);
 
+                loadMoreButton.setVisibility(View.VISIBLE);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -95,9 +108,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         });
         queue.add(stringRequest);
 
-
     }
-
 
     @Override
     public void onItemClicked(ExerciseModelStorage exerciseModelStorage) {
@@ -126,6 +137,5 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         startActivity(newIntent);
 
     }
-
 
 }
