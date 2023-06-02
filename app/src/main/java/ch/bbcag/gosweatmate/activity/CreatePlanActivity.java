@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -30,17 +31,23 @@ import java.util.List;
 import ch.bbcag.gosweatmate.R;
 import ch.bbcag.gosweatmate.adapter.AddExerciseGalleryAdapter;
 import ch.bbcag.gosweatmate.adapter.CreatePlanExercisesAdapter;
+import ch.bbcag.gosweatmate.dal.dao.WorkoutDao;
+import ch.bbcag.gosweatmate.dal.dao.WorkoutHasExerciseDao;
+import ch.bbcag.gosweatmate.dal.database.AppDatabase;
+import ch.bbcag.gosweatmate.dal.entities.Workout;
+import ch.bbcag.gosweatmate.dal.entities.WorkoutHasExercise;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 
 public class CreatePlanActivity extends AppCompatActivity {
 
-    private TextView textViewTest;
+    private EditText editText;
     private List<Integer> exerciseIds = new ArrayList();
     private RecyclerView.Adapter myAdapter;
-
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
+    private WorkoutDao workoutDao;
+    private WorkoutHasExerciseDao workoutHasExerciseDao;
 
     private List<ExerciseModelStorage> exerciseModels = new ArrayList<>();
 
@@ -51,6 +58,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_plan);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView19);
+        editText = findViewById(R.id.editText);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -141,6 +149,18 @@ public class CreatePlanActivity extends AppCompatActivity {
             }
         });
 
+        Button createWorkoutButton = findViewById(R.id.createWorkoutButton);
+        workoutDao = AppDatabase.getInstance(getApplicationContext()).getWorkoutDao();
+        workoutHasExerciseDao = AppDatabase.getInstance(getApplicationContext()).getWorkoutHasExerciseDao();
+
+        createWorkoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String givenWorkoutName = editText.getText().toString();
+                insertWorkoutIntoDB(givenWorkoutName);
+            }
+        });
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -157,6 +177,28 @@ public class CreatePlanActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void insertWorkoutIntoDB(String workoutName) {
+        Workout newWorkout = new Workout();
+
+        newWorkout.setName(workoutName);
+        workoutDao.insertAll(newWorkout);
+
+        List<Workout> allWorkouts = workoutDao.getAll();
+        Integer workoutId = Math.toIntExact(allWorkouts.get(allWorkouts.size() - 1).getId());
+
+        for (Integer exerciseId: exerciseIds) {
+            insertExerciseIntoWorkout(workoutId, exerciseId);
+        }
+
+    }
+    private void insertExerciseIntoWorkout(Integer workoutId, Integer exerciseId) {
+        WorkoutHasExercise workoutHasExercise = new WorkoutHasExercise();
+
+        workoutHasExercise.setWorkoutId(workoutId);
+        workoutHasExercise.setExerciseId(exerciseId);
+        workoutHasExerciseDao.insertAll(workoutHasExercise);
     }
 
 
