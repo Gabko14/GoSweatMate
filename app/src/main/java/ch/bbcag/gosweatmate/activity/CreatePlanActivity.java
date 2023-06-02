@@ -9,17 +9,40 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ch.bbcag.gosweatmate.R;
+import ch.bbcag.gosweatmate.adapter.AddExerciseGalleryAdapter;
+import ch.bbcag.gosweatmate.adapter.CreatePlanExercisesAdapter;
+import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 
 public class CreatePlanActivity extends AppCompatActivity {
 
     private TextView textViewTest;
     private List<Integer> exerciseIds = new ArrayList();
+    private RecyclerView.Adapter myAdapter;
+
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView recyclerView;
+
+    private List<ExerciseModelStorage> exerciseModels = new ArrayList<>();
 
 
     @Override
@@ -27,7 +50,10 @@ public class CreatePlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
 
-        textViewTest = findViewById(R.id.textView50);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView19);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         Intent currentIntent = getIntent();
         Bundle extras = currentIntent.getExtras();
@@ -42,6 +68,61 @@ public class CreatePlanActivity extends AppCompatActivity {
             }
         }
 
+        for (Integer exerciseId : exerciseIds) {
+            String url = "https://wger.de/api/v2/exerciseinfo/" + exerciseId + "/?format=json";
+            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    JSONObject jsonResponse;
+                    try {
+                        jsonResponse = new JSONObject(response);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                    JSONArray imagesJsonArray;
+                    try {
+                        imagesJsonArray = jsonResponse.getJSONArray("images");
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    ExerciseModelStorage currentModel = null;
+                    try {
+                        currentModel = new ExerciseModelStorage(jsonResponse.getString("name"),
+                                jsonResponse.getInt("id"));
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    JSONObject imageObject = null;
+                    try {
+                        if (!imagesJsonArray.isNull(0)) {
+                            imageObject = imagesJsonArray.getJSONObject(0);
+                            currentModel.setImageLink(imageObject.getString("image"));
+
+                        }
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    exerciseModels.add(currentModel);
+
+
+                    myAdapter = new CreatePlanExercisesAdapter(CreatePlanActivity.this, exerciseModels);
+                    recyclerView.setAdapter(myAdapter);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // Handle error
+                }
+            });
+            queue.add(stringRequest);
+
+        }
 
         Button addExercise = findViewById(R.id.AddExerciseButton);
         addExercise.setOnClickListener(new View.OnClickListener() {

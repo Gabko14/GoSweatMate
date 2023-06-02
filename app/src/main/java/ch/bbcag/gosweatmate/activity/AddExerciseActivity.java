@@ -45,7 +45,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ExerciseModelStorage> input = new ArrayList<>();
+        List<ExerciseModelStorage> exerciseModels = new ArrayList<>();
 
 
         String url = "https://wger.de/api/v2/exercise/?format=json&limit=80&offset=0&language=2";
@@ -76,14 +76,14 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
 
 
                         ExerciseModelStorage currentModel = new ExerciseModelStorage(exerciseObject.getString("name"), exerciseObject.getInt("id"));
-                        input.add(currentModel);
+                        exerciseModels.add(currentModel);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
                 }
 
 
-                myAdapter = new AddExerciseGalleryAdapter(AddExerciseActivity.this, input, AddExerciseActivity.this);
+                myAdapter = new AddExerciseGalleryAdapter(AddExerciseActivity.this, exerciseModels, AddExerciseActivity.this);
                 recyclerView.setAdapter(myAdapter);
 
             }

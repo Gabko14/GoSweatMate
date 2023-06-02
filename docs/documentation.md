@@ -57,23 +57,13 @@ Als \Benutzer\ möchte ich beim Klick auf eine Übung sollen die dazugehörigen 
 [Mockup](images/mockup.png)
 
 > ***1. MainActivity***  
-> *Innerhalb der StartActivity wird dem Benutzer zentral ein Login-Formular präsentiert. Oberhalb
-des Formulars wird das Logo der App platziert. Die Eingabefelder sollten möglichst in den oberen
-zwei Drittel des Bildschirms platziert werden damit die Tastatur diese nicht überdeckt.
-> Unter den Eingabefelder sind zwei Buttons platziert, «Login» und «Registrieren». Dabei soll der
-Login-Button farblich hervorgehoben werden da dieser öfters benutzt wird. Der «Registrieren»-Button
-wird im Normalfall einmal benutzt deshalb soll dieser neutral oder sogar weniger prominent
-dargestellt werden.*
+> *In dieser Activity wird dafür gesorgt, das die Navigation funktioniert. Gemeint ist das man die
+Seiten wechseln kann und auf die Gewünschte Seite hingeführt wird. Insgesammt gibt es drei seiten,
+die man besuchen kann. Also grundsätzlich ist hier die ganze Logik einer Navigation.*
 
 > ***2. Create-PlanActivity***  
-> *In der «Badi-Galerie»-Ansicht wird dem Benutzer ein Grid mit den favorisierten Schwimmbäder
-angezeigt. Jedes einzelne Schwimmbad wird mit einem Bild präsentiert. In der in der unteren Ecke
-jedes Bildes wird die aktuelle Temperatur angezeigt. Darunter den Namen der Badi und der Ort. In der
-Auflistung muss auf und ab navigiert werden können da man mehr Schwimmbäder hinzufügen kann als auf
-dem Display Platz haben. Ein Floating-Action-Button mit einem Plus-Icon ist unten rechts am Screen
-platziert um neue Schwimmbäder in die eigene Liste aufzunehmen. In der Actionbar am oberen Rand wird
-rechts ein Kontextmenü platziert welches mit dem entsprechenden Button geöffnet werden kann. Darin
-sind die Punkte Einstellungen, Hilfe und Logout zu finden.*
+> *Wie es der Name schon sagt werden hier die Pläne Created. Man gelangt durch die Home Seite auf
+diese Seite und kann dann schnell und einfach Seite Pläne erstellen. Man gibt dem Plan einen *
 
 > ***3. Add-ExerciseActivity***   
 > ...
@@ -82,11 +72,19 @@ sind die Punkte Einstellungen, Hilfe und Logout zu finden.*
 > ...
 
 > ***5. Explore***   
-> ...
-> 
+> *Das Ziel dieser Seite ist es dem Benutzer zu helfen. Wie wird das gemacht?
+Auf dieser Seite sind Beispiele von Plänen zu sehen die man so übernehmen kann sowie sich 
+inspirieren lassen. Es ist zwar ein eher weniger wichtiger Teil der Seite aber wiederum gut so etwas
+zu haben.*
+
 > > ***5. Home***   
-> ...
-> 
+> *Das ist die Home Seite. So zu sagen der Haupt Teil unserer Seite. 
+Zu oberst ist ein Create button zu sehen der uns zur Create Seite führt. 
+Mehr dazu aber im Create abschnitt. Grundsätzlich sind alle Workouts zu
+sehen die mann erstellt hat. Zudem wenn man auf die Workouts klickt werden einem die 
+Details angezeigt. Diese seite ist schlicht und einfach. Zudem beinhaltet sie alles was man benötigt
+und es wird dem Benutzer eine freundliche Benutzeroberfläche angezeigt. *
+
 > > ***5. History***   
 > ...
 
@@ -142,4 +140,4 @@ der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
 > * *Wie seid ihr mit dem Ergebniss zufrieden?*
 > * *Was habt ihr gelernt?*
 > * *War alles vorhanden oder was fehlte noch?*
-> * *Usw.*
+
