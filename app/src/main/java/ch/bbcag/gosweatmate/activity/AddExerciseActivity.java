@@ -73,7 +73,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
                 for (int i = 0; i < resultsJsonArray.length(); i++) {
                     try {
                         JSONObject exerciseObject = resultsJsonArray.getJSONObject(i);
-                        int id = exerciseObject.getInt("id");
+
 
                         ExerciseModelStorage currentModel = new ExerciseModelStorage(exerciseObject.getString("name"), exerciseObject.getInt("id"));
                         input.add(currentModel);
@@ -96,11 +96,7 @@ public class AddExerciseActivity extends AppCompatActivity implements SelectList
         queue.add(stringRequest);
 
 
-
-
     }
-
-
 
 
     @Override

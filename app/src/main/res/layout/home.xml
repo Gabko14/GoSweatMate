@@ -16,12 +16,6 @@
         android:paddingBottom="24dp">
 
 
-        <TextView
-            android:id="@+id/text69"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp" />
-
-
         <Button
             android:id="@+id/createWorkouButton"
             android:layout_width="match_parent"
@@ -29,50 +23,20 @@
             android:backgroundTint="#479CFE"
             android:text="Create workout" />
 
-        <Button
-            android:id="@+id/button2"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="36dp" />
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:text="Create"
-            android:textColor="#479CFE"
-            app:strokeColor="#2B2B2B"
-            app:strokeWidth="1dp" />
+            android:text="Your Workouts:"
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/customborder"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Leg Training at home"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Squat, Air Jumps, Lunges, blabla, bla, calf Raises, singlw calf raise, Leg press" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:backgroundTint="#292929"
-            android:text="Workouts"
-            app:cornerRadius="15dp"
-            app:strokeColor="#B8B8B8"
-            app:strokeWidth="2dp" />
+            android:layout_height="33dp" />
 
 
     </LinearLayout>

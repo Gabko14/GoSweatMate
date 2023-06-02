@@ -1,7 +1,5 @@
 package ch.bbcag.gosweatmate.dal.dao;
 
-import android.widget.ListView;
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,6 +13,9 @@ import ch.bbcag.gosweatmate.dal.entities.Workout;
 public interface WorkoutDao {
     @Query("SELECT * FROM workout")
     List<Workout> getAll();
+
+    @Query("DELETE FROM workout WHERE workout.id = :id")
+    void deleteById(int id);
 
     @Insert
     void insertAll(Workout... workouts);
