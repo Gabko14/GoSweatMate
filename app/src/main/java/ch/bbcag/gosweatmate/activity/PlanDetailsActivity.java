@@ -58,7 +58,6 @@ public class PlanDetailsActivity extends AppCompatActivity {
             long exerciseId = workoutHasExercise.getExerciseId();
 
             if (workoutId == currentWorkoutId) {
-                System.out.println("WorkoutId: " + currentWorkoutId + " exerciseId: " + exerciseId);
                 exerciseIds.add((int) exerciseId);
             }
         }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,14 +39,14 @@ public class PlanDetailsAdapter extends RecyclerView.Adapter<PlanDetailsAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtHeader;
-        public TextView txtFooter;
-        public Button addBtn;
+        public ImageView imageView;
         public View layout;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
+            imageView = (ImageView) v.findViewById(R.id.icon);
         }
     }
 
@@ -75,7 +77,7 @@ public class PlanDetailsAdapter extends RecyclerView.Adapter<PlanDetailsAdapter.
 
         final Integer currentxerciseId = exerciseIds.get(position);
 
-        String url = "https://wger.de/api/v2/exercise/" + currentxerciseId + "/?format=json";
+        String url = "https://wger.de/api/v2/exerciseinfo/" + currentxerciseId + "/?format=json";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -90,6 +92,20 @@ public class PlanDetailsAdapter extends RecyclerView.Adapter<PlanDetailsAdapter.
                 try {
                     System.out.println(jsonResponse.getString("name"));
                     holder.txtHeader.setText(jsonResponse.getString("name"));
+
+
+                    try {
+                        JSONArray imagesJsonArray = jsonResponse.getJSONArray("images");
+                        if (!imagesJsonArray.isNull(0)) {
+                            JSONObject imageObject = imagesJsonArray.getJSONObject(0);
+                            if (imageObject.getString("image") != "" && imageObject.getString("image") != null) {
+                                Picasso.get().load(imageObject.getString("image")).into(holder.imageView);
+                            }
+
+                        }
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

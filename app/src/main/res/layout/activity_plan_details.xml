@@ -8,23 +8,35 @@
 
     <Button
         android:id="@+id/deleteWorkoutButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:layout_toLeftOf="@id/finishButton"
         android:backgroundTint="#BD1E1E"
         android:text="Delete Workout Plan" />
+
+
+    <Button
+        android:id="@+id/finishButton"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Finished" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deleteWorkoutButton"/>
-
-
-
-
+        android:layout_below="@id/finishButton"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
 </RelativeLayout>
