@@ -65,9 +65,7 @@ public class HomeFragment extends Fragment {
 
         List<Workout> allWorkouts = workoutDao.getAll();
 
-        for (Workout workout: allWorkouts) {
-            System.out.println(workout.getId());
-        }
+
 
         LinearLayout mainLinearLayout = view.findViewById(R.id.homeMainLinearLayout);
 

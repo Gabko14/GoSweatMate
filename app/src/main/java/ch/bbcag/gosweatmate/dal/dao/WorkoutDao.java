@@ -14,6 +14,9 @@ public interface WorkoutDao {
     @Query("SELECT * FROM workout")
     List<Workout> getAll();
 
+    @Query("SELECT * FROM workout w WHERE w.id=:id")
+    Workout getById(int id);
+
     @Query("DELETE FROM workout WHERE workout.id = :id")
     void deleteById(int id);
 
