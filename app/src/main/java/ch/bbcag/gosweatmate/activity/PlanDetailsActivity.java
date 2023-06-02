@@ -77,11 +77,8 @@ public class PlanDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 workoutDao.deleteById(workoutId);
 
-                Fragment selectedFragment = HomeFragment.newInstance();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectedFragment);
-                transaction.commit();
-
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
     }

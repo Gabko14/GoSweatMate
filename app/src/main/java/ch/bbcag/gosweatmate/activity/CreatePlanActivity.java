@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,7 @@ import ch.bbcag.gosweatmate.dal.dao.WorkoutHasExerciseDao;
 import ch.bbcag.gosweatmate.dal.database.AppDatabase;
 import ch.bbcag.gosweatmate.dal.entities.Workout;
 import ch.bbcag.gosweatmate.dal.entities.WorkoutHasExercise;
+import ch.bbcag.gosweatmate.fragment.HomeFragment;
 import ch.bbcag.gosweatmate.helper.ExerciseModelStorage;
 
 
@@ -162,6 +165,9 @@ public class CreatePlanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String givenWorkoutName = editText.getText().toString();
                 insertWorkoutIntoDB(givenWorkoutName);
+
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(myIntent);
             }
         });
 
@@ -196,6 +202,7 @@ public class CreatePlanActivity extends AppCompatActivity {
             insertExerciseIntoWorkout(workoutId, exerciseId);
         }
 
+
     }
 
     private void insertExerciseIntoWorkout(Integer workoutId, Integer exerciseId) {
@@ -205,6 +212,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         workoutHasExercise.setExerciseId(exerciseId);
         workoutHasExerciseDao.insertAll(workoutHasExercise);
     }
+
 
 
 }
