@@ -1,12 +1,19 @@
 package ch.bbcag.gosweatmate.helper;
 
 public class ExerciseModelStorage {
-    String name = "";
     Integer id = null;
+    String name = "";
+    String imageLink = "";
 
     public ExerciseModelStorage(String name, Integer id) {
         this.name = name;
         this.id = id;
+    }
+
+    public ExerciseModelStorage(String name, Integer id, String imageLink) {
+        this.name = name;
+        this.id = id;
+        this.imageLink = imageLink;
     }
 
     public String getName() {
@@ -23,5 +30,13 @@ public class ExerciseModelStorage {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 }
