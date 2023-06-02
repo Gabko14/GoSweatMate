@@ -48,45 +48,70 @@ Es ermöglichen Sätze sowie die restlichen fehlenden Punkte zu beheben.
 
 # 3 User Storys
 
-Als \Benutzer\ möchte ich eine benutzerfreundliche App nutzen können, so dass ich schnell zurecht finde uns ich die App gut nutzen kann.
-Als \Benutzer\ möchte ich beim Öffnen der App eine Liste mit Übungen sehen, so dass ich schnell zurecht finde uns ich die App gut nutzen kann.
-Als \Benutzer\ möchte ich beim Klick auf eine Übung sollen die dazugehörigen details angezeit werden, so dass ich weitere Informationen zur Übung lesen kann.
+* Als Benutzer möchte ich eine benutzerfreundliche App verwenden können, damit ich mich schnell
+  zurechtfinde und die App effektiv nutzen kann.
+
+* Als Benutzer möchte ich beim Öffnen der App eine Liste mit Übungen sehen, um schnell einen
+  Überblick zu haben und die App gut nutzen zu können.
+
+* Als Benutzer möchte ich beim Klick auf eine Übung die dazugehörigen Details angezeigt bekommen, um
+  weitere Informationen zur Übung lesen zu können.
+
+* Als Benutzer möchte ich meine Trainings erfassen und verfolgen können, damit ich den Überblick
+  behalte und weiß, was ich bereits gemacht habe.
+
+* Als Benutzer möchte ich meine erfassten Trainings favorisieren können, damit ich nicht immer alles
+  neu eingeben muss.
+
+* Als Benutzer möchte ich Push-Benachrichtigungen einstellen können, um die Kontrolle darüber zu
+  haben, wie und wann ich sie erhalte.
+
+* Als Benutzer möchte ich die eingestellten Benachrichtigungen erhalten, damit ich erinnert werde,
+  falls ich etwas vergessen habe.
 
 # 4 Mockups
 
 [Mockup](images/mockup.png)
 
 > ***1. MainActivity***  
-> *In dieser Activity wird dafür gesorgt, das die Navigation funktioniert. Gemeint ist das man die
-Seiten wechseln kann und auf die Gewünschte Seite hingeführt wird. Insgesammt gibt es drei seiten,
-die man besuchen kann. Also grundsätzlich ist hier die ganze Logik einer Navigation.*
+> *In dieser Activity wird die Navigation innerhalb der App ermöglicht. Hier wird die Logik
+implementiert, um zwischen den verschiedenen Seiten zu wechseln und den Benutzer zur gewünschten
+Seite zu führen. Insgesamt gibt es drei Seiten, die besucht werden können. Diese Activity stellt die
+grundlegende Navigation der App dar.*
 
 > ***2. Create-PlanActivity***  
-> *Wie es der Name schon sagt werden hier die Pläne Created. Man gelangt durch die Home Seite auf
-diese Seite und kann dann schnell und einfach Seite Pläne erstellen. Man gibt dem Plan einen *
+> *Wie der Name schon sagt, werden hier Pläne erstellt. Der Benutzer gelangt von der Home-Seite zu
+dieser Seite und kann schnell und einfach Trainingspläne erstellen. Dabei kann der Plan einen Namen
+erhalten und der Benutzer kann die gewünschten Übungen hinzufügen. Auf diese Weise kann der Benutzer
+eigene Trainingspläne erstellen und betrachten.*
 
 > ***3. Add-ExerciseActivity***   
-> ...
+> *Diese Seite enthält eine Liste aller verfügbaren Übungen. Die API von https://wger.de/api/v2/
+wird hier aufgerufen, um alle Übungen abzurufen. Der Benutzer kann Übungen auswählen und sie seinem
+Workout hinzufügen. Es stehen verschiedene Übungen zur Auswahl, um den Bedürfnissen und Zielen des
+Benutzers gerecht zu werden.*
 
 > ***4. Plan-DetailsActivity***   
-> ...
+> *Wenn der Benutzer einen Plan erstellt hat und detailliertere Informationen dazu sehen möchte,
+kann er diese Seite aufrufen. Hier werden verschiedene Details zum Plan angezeigt, um dem Benutzer
+ein besseres Verständnis zu vermitteln. Diese Informationen sollen dem Benutzer helfen, den Plan
+effektiver umzusetzen.*
 
 > ***5. Explore***   
-> *Das Ziel dieser Seite ist es dem Benutzer zu helfen. Wie wird das gemacht?
-Auf dieser Seite sind Beispiele von Plänen zu sehen die man so übernehmen kann sowie sich 
-inspirieren lassen. Es ist zwar ein eher weniger wichtiger Teil der Seite aber wiederum gut so etwas
-zu haben.*
+> *Das Ziel dieser Seite ist es, dem Benutzer zu helfen. Hier werden Beispiele von Plänen gezeigt,
+die der Benutzer übernehmen oder als Inspiration nutzen kann. Obwohl dies ein weniger wichtiger Teil
+der Seite ist, kann es den Benutzern helfen, neue Ideen und Trainingsmethoden zu entdecken.*
 
-> > ***5. Home***   
-> *Das ist die Home Seite. So zu sagen der Haupt Teil unserer Seite. 
-Zu oberst ist ein Create button zu sehen der uns zur Create Seite führt. 
-Mehr dazu aber im Create abschnitt. Grundsätzlich sind alle Workouts zu
-sehen die mann erstellt hat. Zudem wenn man auf die Workouts klickt werden einem die 
-Details angezeigt. Diese seite ist schlicht und einfach. Zudem beinhaltet sie alles was man benötigt
-und es wird dem Benutzer eine freundliche Benutzeroberfläche angezeigt. *
+> > ***6. Home***   
+> *Dies ist die Startseite der App und der Hauptteil der Seite. Ganz oben befindet sich ein "Create"
+-Button, der den Benutzer zur Create-Seite führt. Auf dieser Seite werden alle erstellten Workouts
+angezeigt. Wenn der Benutzer auf ein Workout klickt, werden ihm weitere Details dazu angezeigt. Die
+Home-Seite ist schlicht und einfach gestaltet und bietet dem Benutzer eine benutzerfreundliche
+Oberfläche.*
 
-> > ***5. History***   
-> ...
+> > ***7. History***   
+> *Diese Seite zeigt alle kürzlich erstellten Workouts an. Es dient sozusagen als Archiv und
+ermöglicht dem Benutzer, frühere Pläne erneut zu betrachten und darauf zuzugreifen.*
 
 # 5 Technische Realisierung
 
@@ -135,7 +160,7 @@ der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
 
 # 7 Fazit
 
-> *Hier kommt eure Reflexion zum Projekt*
+> *Reflexion zum Gosweatmate Projekt*
 > * *Was lief gut/schlecht?*
 > * *Wie seid ihr mit dem Ergebniss zufrieden?*
 > * *Was habt ihr gelernt?*
