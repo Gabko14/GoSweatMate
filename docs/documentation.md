@@ -51,23 +51,21 @@ Es ermöglichen Sätze sowie die restlichen fehlenden Punkte zu beheben.
 * Als Benutzer möchte ich eine benutzerfreundliche App verwenden können, damit ich mich schnell
   zurechtfinde und die App effektiv nutzen kann.
 
+* Als Benutzer möchte ich eine Navigation haben, mit der ich schnell die Seiten wechseln kann.
+
 * Als Benutzer möchte ich beim Öffnen der App eine Liste mit Übungen sehen, um schnell einen
   Überblick zu haben und die App gut nutzen zu können.
 
-* Als Benutzer möchte ich beim Klick auf eine Übung die dazugehörigen Details angezeigt bekommen, um
-  weitere Informationen zur Übung lesen zu können.
-
 * Als Benutzer möchte ich meine Trainings erfassen und verfolgen können, damit ich den Überblick
-  behalte und weiß, was ich bereits gemacht habe.
+  behalte und weiss, was ich bereits gemacht habe.
 
-* Als Benutzer möchte ich meine erfassten Trainings favorisieren können, damit ich nicht immer alles
-  neu eingeben muss.
+* Als Benutzer möchte ich meine erfassten Trainings sehen können sowie die Details, damit ich genau
+  informiert bin.
 
-* Als Benutzer möchte ich Push-Benachrichtigungen einstellen können, um die Kontrolle darüber zu
-  haben, wie und wann ich sie erhalte.
+* Als Benutzer möchte ich, wenn alle exercises geladen sind, dass ich neue exercises laden kann.
+  Damit ich immer neue finden kann.
 
-* Als Benutzer möchte ich die eingestellten Benachrichtigungen erhalten, damit ich erinnert werde,
-  falls ich etwas vergessen habe.
+* Als Benutzer möchte ich, wenn ich keine Lust mehr auf ein Workout habe, dieses löschen kann.
 
 # 4 Mockups
 
@@ -115,45 +113,89 @@ ermöglicht dem Benutzer, frühere Pläne erneut zu betrachten und darauf zuzugr
 
 # 5 Technische Realisierung
 
-> *Beschreibt hier, wie ihr eure komplexe Komponente technisch umgesetzt habt. Zur Darstellung der
-technischen Umsetzung wird ein UML-Diagramm empfohlen, welches zusätzlich in Textform beschrieben
-wird. Erklärt kurz die wichtigsten Klassen und Methoden und deren Zusammenspiel. Eine Fachperson,
-welche dieses Kapitel liest, sollte schnell nachvollziehen können, wie die externe Komponente
-realisiert wurde.*
+> *Room: Im Entities Folder haben wir alle Entities das ist ähnlich wie Tabellen im SQL.
+Für jede Entity gibts auch noch ein Dao im Dao Folder, die Daos dienen dazu Sachen aus der Datenbank abzufragen oder löschen. Kurz
+gesagt, in den Daos kann man Queries schreiben. Das AppDatabase ist ein wichtiger Bestandteil, dass der Datenbank der sorgt, dafür, dass
+die Sachen auch gespeichert werden.
+Volley Api Abfragen: Wie man in mehreren Komponenten sieht, wie zum Beispiel AddExerciseActivity, benutzen wir Volley um Api Abfragen zu machen.
+Im OnErrorResponse werde Sachen behandelt wie zum Beispiel, wenn der User keine Internetverbindung hat, in dieses Beispiel würde der User benachrichtigt werde
+RecyclerView: Ein RecyclerView ist eine komplexe Liste mit eigenem Layout, die Layouts für die RecyclerViews fangen immer mit row_layout an, für jedes
+> RecyclerView (aussert es wird mehrmals gebraucht) hat es ein Adapter, der Adapter dien dazu die AdapterViews auszufüllen weil es ja bei jedem RecyclerView individuell ist
+und es zum Beispiel mehrere Views geben kann*
 
 # 6 Testing
 
-> *In diesem Kapitel definiert ihr die Tests die Ihr macht.
-Es müssen minimal 5 Unit-Tests, 3 automatische UI-Tests (Espresso) und 2 manuelle UI-Tests gemacht
-werden. Auf die Unit-Tests und die automatischen UI-Tests soll hier verwiesen werden, die manuellen
-UI-Tests hier definiert werden.*
+| Abschnitt                 | Inhalt                                                                                                                               |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| ***ID***                  | *ST-01*                                                                                                                              |
+| ***Anforderungen***       | *US-01; US-02*                                                                                                                       |
+| ***Vorbedingungen***      | *Die App läuft ohne schwierigkeiten auf einem Handy.*                                                                                |
+| ***Ablauf***              | *1. Die App wird gestartet damit man auf der Home Seite ist.*<br>*2. Das Navigationsmenü ist zu sehen.*<br>*3. Man kann Navigieren.* |
+| ***Erwartetes Resultat*** | *Man wird zu seiner Gewünschten Seite hingeführt.*                                                                                   |
 
-|Abschnitt |Inhalt  |
-|----------|--------|
-|***ID***|*Testfallnummer (ST = Systemtest)*|
-|***Anforderungen***|*Welche Anforderungen werden durch diesen Testfall abgedeckt. (User Stories)*|
-|***Vorbedingungen***|*Was muss gegeben sein, damit dieser Test durchgeführt werden kann?*|
-|***Ablauf***|*Welche Schritte werden bei der Durchführung des Tests durchlaufen?*|
-|***Erwartetes Resultat***|*Was sollte nun passiert sein?*|
+| Abschnitt                 | Inhalt                                                                        |
+|---------------------------|-------------------------------------------------------------------------------|
+| ***ID***                  | *ST-02*                                                                       |
+| ***Anforderungen***       | *US-01; US-03*                                                                |
+| ***Vorbedingungen***      | *Api funktioniert und alle Exercises stehen zu verfügung.*                    |
+| ***Ablauf***              | *Man geht auf die Create Seite und fügt die Exercises für seinen Plan hinein* |
+| ***Erwartetes Resultat*** | *Die Exercises erscheinen am gewünsten Ort und man kann Pläne erstellen.*     |
 
-|Abschnitt |Inhalt  |
-|----------|--------|
-|***ID***|*ST-01*|
-|***Anforderungen***|*US-01; US-03*|
-|***Vorbedingungen***|*In der Datenbank existiert ein Benutzer, welcher gesperrt ist.*|
-|***Ablauf***|*1. Die App wird gestartet damit das Login-Formular erscheint*<br>*2. Der korrekte Benutzername sowie das korrekte Passwort werden eingegeben.*<br>*3. Der Button mit dem Label „Login“ wird geklickt.*|
-|***Erwartetes Resultat***|*Ein Toast mit dem Text «Login erfolgreich» wird angezeigt. Die App wechselt zu der Ansicht mit den favorisierten Schwimmbäder.*|
+| Abschnitt                 | Inhalt                                                                                                                                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ***ID***                  | *ST-03*                                                                                                                                                                                                 |
+| ***Anforderungen***       | *US-01; US-03*                                                                                                                                                                                          |
+| ***Vorbedingungen***      | *In der Datenbank existiert ein Benutzer, welcher gesperrt ist.*                                                                                                                                        |
+| ***Ablauf***              | *1. Die App wird gestartet damit das Login-Formular erscheint*<br>*2. Der korrekte Benutzername sowie das korrekte Passwort werden eingegeben.*<br>*3. Der Button mit dem Label „Login“ wird geklickt.* |
+| ***Erwartetes Resultat*** | *Ein Toast mit dem Text «Login erfolgreich» wird angezeigt. Die App wechselt zu der Ansicht mit den favorisierten Schwimmbäder.*                                                                        |
 
-## 6.1 Manuelle UI-Tests
+| Abschnitt                 | Inhalt                                                                                                                                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ***ID***                  | *ST-04*                                                                                                                                                                                                 |
+| ***Anforderungen***       | *US-01; US-03*                                                                                                                                                                                          |
+| ***Vorbedingungen***      | *In der Datenbank existiert ein Benutzer, welcher gesperrt ist.*                                                                                                                                        |
+| ***Ablauf***              | *1. Die App wird gestartet damit das Login-Formular erscheint*<br>*2. Der korrekte Benutzername sowie das korrekte Passwort werden eingegeben.*<br>*3. Der Button mit dem Label „Login“ wird geklickt.* |
+| ***Erwartetes Resultat*** | *Ein Toast mit dem Text «Login erfolgreich» wird angezeigt. Die App wechselt zu der Ansicht mit den favorisierten Schwimmbäder.*                                                                        |
 
-> *Zusammenfassung aller durchgeführten Tests. Nur fehlgeschlagene Tests und Tests mit Bemerkungen
-müssen in der folgenden Tabelle aufgelistet werden.*
+| Abschnitt                 | Inhalt                                                                                                                                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ***ID***                  | *ST-05*                                                                                                                                                                                                 |
+| ***Anforderungen***       | *US-01; US-03*                                                                                                                                                                                          |
+| ***Vorbedingungen***      | *In der Datenbank existiert ein Benutzer, welcher gesperrt ist.*                                                                                                                                        |
+| ***Ablauf***              | *1. Die App wird gestartet damit das Login-Formular erscheint*<br>*2. Der korrekte Benutzername sowie das korrekte Passwort werden eingegeben.*<br>*3. Der Button mit dem Label „Login“ wird geklickt.* |
+| ***Erwartetes Resultat*** | *Ein Toast mit dem Text «Login erfolgreich» wird angezeigt. Die App wechselt zu der Ansicht mit den favorisierten Schwimmbäder.*                                                                        |
 
 ## 6.2 Testauswertung
 
 |ID|Erfolgreich|Bemerkung|
 |--|-----------|---------|
-|***ST-01***|*Ja*|*Der Testfall war erfolgreich, der Testperson 1 ist jedoch aufgefallen, dass es in
+|***ST-01***|*Ja*|*Der Testfall war erfolgreich und man konnte Navigieren.*|
+|***...***|*...*|*...*|
+||||
+
+|ID|Erfolgreich|Bemerkung|
+|--|-----------|---------|
+|***ST-02***|*Ja*|*Der Testfall war erfolgreich und man kann alle exercises hinzufügen.*|
+|***...***|*...*|*...*|
+||||
+
+|ID|Erfolgreich|Bemerkung|
+|--|-----------|---------|
+|***ST-03***|*Ja*|*Der Testfall war erfolgreich, der Testperson 1 ist jedoch aufgefallen, dass es in
+der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
+|***...***|*...*|*...*|
+||||
+
+|ID|Erfolgreich|Bemerkung|
+|--|-----------|---------|
+|***ST-04***|*Ja*|*Der Testfall war erfolgreich, der Testperson 1 ist jedoch aufgefallen, dass es in
+der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
+|***...***|*...*|*...*|
+||||
+
+|ID|Erfolgreich|Bemerkung|
+|--|-----------|---------|
+|***ST-05***|*Ja*|*Der Testfall war erfolgreich, der Testperson 1 ist jedoch aufgefallen, dass es in
 der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
 |***...***|*...*|*...*|
 ||||
@@ -162,7 +204,39 @@ der angezeigten Fehlermeldung noch einen Rechtschreibfehler gibt.*|
 
 > *Reflexion zum Gosweatmate Projekt*
 > * *Was lief gut/schlecht?*
+
+    Beginnen wir mit den positiven Punkten. Wir konnten viel wissen, sammel und haben uns auch etwas 
+    austoben können. Wir hatten sehr viel Freiraum und konnten oft selber entscheiden 
+    was wir machen wollten. Das Projekt war auch sehr Arbeit nahe und es war nicht nur zum Spass
+    sondern auch dafür das wir uns vorstellen können wie so ein Projekt sein wird. 
+    Was vielleicht nicht so gut war das wir uns etwas mit der Zeit überschätzt haben 
+    und wir nicht ganz alles so machen konnten wie wir es wollten. Das war vor allem zu Beginn
+    des Projektes so.
+
 > * *Wie seid ihr mit dem Ergebniss zufrieden?*
+
+    Wir sind mit dem Ergebnis grundsätzlich zufrieden. Während der Arbeit an unserem Projekt waren
+    wir motiviert und hatten immer Spass daran. Es war eine grossartige Gelegenheit, unsere Kenntnisse
+    in Android Studio zu kennenzulernen und praktische Erfahrungen in der App-Entwicklung zu 
+    sammeln. Wir haben unser Bestes gegeben und sind stolz auf das, was wir erreicht haben. 
+    Dennoch haben wir auch das, Gefühl das wir an, ein zwei Punkten mehr hätten machen können.
+
 > * *Was habt ihr gelernt?*
+
+    Wir haben viel Neues gelernt. Vor allem da wir noch keine grossen Erfahrungen mit Android Studio
+    haben. Wir haben grundlegende Kenntnisse zur Entwicklung von Android-Apps
+    angeschaut. Wir haben die Projekteinrichtung, den Layout-Editor für die Benutzeroberfläche, die
+    Erstellung von Aktivitäten und die Verwendung von Absichten zum Navigieren zwischen ihnen
+    gelernt. Diese Kenntnisse haben uns geholfen, die Grundlagen der
+    Android-Entwicklung zu verstehen und dieses Projekt zu entwickeln.
+
 > * *War alles vorhanden oder was fehlte noch?*
+
+    Wir haben diejenigen Issues fertiggestellt, die die höchste Priorität hatten. Leider reichte die
+    Zeit nicht aus, um einige andere Issues abzuschliessen. Diese betrafen jedoch nicht die
+    Kernaspekte unseres Projekts, sondern waren eher kleinere Funktionen oder Features.
+    Deshalb gab es keine grossen Auswirkungen.
+
+
+
 
