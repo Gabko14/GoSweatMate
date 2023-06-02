@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
 //        insertWorkout("Push Workout 1.");
 //        insertWorkout("Pull Workout 2.");
 //        insertWorkout("Legs Workout 3.");
-//
+////
 //        insertExerciseIntoWorkout(1, 345);
 //        insertExerciseIntoWorkout(1, 2056);
 
